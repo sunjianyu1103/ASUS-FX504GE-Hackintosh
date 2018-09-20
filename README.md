@@ -7,6 +7,9 @@ Discussion, necessary configuration and instructions to get [this ASUS TUF FX504
 * Native UEFI in this laptop does not work with Clover, emulation needed
 * You need an extra official kext just for Intel graphics to work
 
+# Major Issue
+Often, after the boot process finished, the screen will seem to be black, but actually it's that the brightness goes to the lowest and it is impossible to adjust the brightness by any means. However, the screen will eventually turn to the normal brightness after several minutes have passed.
+
 # Creating macOS Installer
 You need a 16+ GB macOS installer flash drive prepared using [macOS High Sierra Patcher](http://dosdude1.com/highsierra/) (on an exising mac computer running macOS High Sierra 10.13.6) with Clover r4674+ bootloader installed to the flash drive. Important Clover settings (via Clover Configurator) are:
 1. Acpi: `change HECI to IMEI`, `change GFX0 to IGPU`, `change HDAS to HDEF`
