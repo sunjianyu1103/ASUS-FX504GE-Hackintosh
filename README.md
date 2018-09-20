@@ -5,6 +5,7 @@ Discussion, necessary configuration and instructions to get [this ASUS TUF FX504
 * The OS partition is formatted using HFS+J rather than APFS (It might work too, though)
 * macOS is installed to a 128GB SSD NVMe M.2
 * Native UEFI in this laptop does not work with Clover, emulation needed
+* You need an extra official kext just for Intel graphics to work
 
 # Creating macOS Installer
 You need a 16+ GB macOS installer flash drive prepared using [macOS High Sierra Patcher](http://dosdude1.com/highsierra/) (on an exising mac computer running macOS High Sierra 10.13.6) with Clover r4674+ bootloader installed to the flash drive. Important Clover settings (via Clover Configurator) are:
@@ -33,6 +34,7 @@ Kexts (`/EFI/CLOVER/kexts`): **FakeSMC**, Lilu, VoodooPS2Controller, WhateverGre
     1. Kernel and Kext Patches: `Kernel LAPIC`, `KernelPm`, `AppleRTC` checked
 1. Kexts (`/EFI/CLOVER/kexts`) added: ACPIBatteryManager, VoodooHDA (2.9.0+)
 1. Karabiner (to remap your keyboard)
+1. [AppleIntelCFLGraphicsFramebuffer.kext](https://www.tonymacx86.com/attachments/appleintelcflgraphicsframebuffer-kext-zip.341983/) installed to `/System/Library/Extensions` for Intel UHD 630 to work natively (See [here](https://www.tonymacx86.com/threads/guide-native-intel-uhd630-graphics-support-in-macos-10-13-6.256426/) for more information)
 
 # What work
 1. CPU native power management (Incompleted (?) according to console logging)
@@ -48,9 +50,9 @@ Kexts (`/EFI/CLOVER/kexts`): **FakeSMC**, Lilu, VoodooPS2Controller, WhateverGre
 1. Intel Wi-FI (AC 9560)
 1. Touchpad
 1. Headphone jack
+1. Sleep/wake
 
 # Untested
 1. Realtek LAN
-1. Sleep/wake
 
 ![Screenshot](FX504GE-SS.png?raw=true)
