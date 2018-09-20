@@ -47,12 +47,14 @@ Kexts (`/EFI/CLOVER/kexts`): **FakeSMC**, Lilu, VoodooPS2Controller, WhateverGre
 1. USB ports 2.0/3.0
 1. Bluetooth
 
+# What somewhat work
+1. Headphone jack (balance needs to be either left or right to make sound works properly)
+
 # What don't work (yet)
 1. Discrete graphics (NVIDIA GeForce 1050 Ti)
 1. HDMI port
 1. Intel Wi-FI (AC 9560)
 1. Touchpad
-1. Headphone jack
 1. Sleep/wake
 
 # Untested
