@@ -52,3 +52,5 @@ Kexts (`/EFI/CLOVER/kexts`): **FakeSMC**, Lilu, VoodooPS2Controller, WhateverGre
 # Untested
 1. Realtek LAN
 1. Sleep/wake
+
+![Screenshot](FX504GE-SS.png?raw=true)
