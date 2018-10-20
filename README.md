@@ -1,11 +1,16 @@
 # ASUS-FX504GE-Hackintosh
 Discussion, necessary configuration and instructions to get [this ASUS TUF FX504GE laptop](https://www.ultrabookreview.com/19725-asus-tuf-fx504ge-review/) working with macOS Mojave 10.14. The following should also work with all ASUS FX504G.. laptop variants.
 
+# Notes
+1. 128 GB NVMe SSD is used for installing macOS
+2. APFS partition format has to be used
+3. If you are upgrading from the previous version and your partition is HFS+, better boot the installer, unmount the partition and convert it to APFS
+
 # Pre-installation
 Get yourself a Mojave USB installer with Clover installed. Important Clover settings (via Clover Configurator) are:
 1. Boot: flags: `dart=0 -no_compat_check`
 2. CPU: `QPI=100`
-3. Graphics: Inject Intel = Yes
+3. Graphics: Inject `Intel=Yes`
 4. SMBIOS: MacBookPro15,2
 5. UEFI Drivers: **EmuVariableUefi-64**, **ApfsDriverLoader-64**, **PartitionDxe-64**, CsmVideoDxe64, OsxAptioFixDrv-64, UsbKbDxe-64, UsbMouseDxe-64, NvmExpressDxe-64.efi, HFSPlus-64
  
