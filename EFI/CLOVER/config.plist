@@ -132,14 +132,18 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>dart=0 igfxcflbklt=force nvda_drv=1 -uia_ignore_rmcf nv_spanmodepolicy=1 enable-cfl-backlight-fix -no_compat_check darkwake=8</string>
+		<string>dart=0 igfxcflbklt=freq nvda_drv=1 -uia_ignore_rmcf nv_spanmodepolicy=1 enable-cfl-backlight-fix -no_compat_check</string>
+		<key>CustomLogo</key>
+		<string>Apple</string>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
-		<string>macOS</string>
+		<string>LastBootedVolume</string>
 		<key>HibernationFixup</key>
-		<true/>
+		<false/>
 		<key>IgnoreNVRAMBoot</key>
+		<true/>
+		<key>NeverHibernate</key>
 		<true/>
 		<key>Secure</key>
 		<false/>
@@ -150,6 +154,8 @@
 	</dict>
 	<key>CPU</key>
 	<dict>
+		<key>HWPEnable</key>
+		<false/>
 		<key>QPI</key>
 		<integer>100</integer>
 	</dict>
@@ -159,62 +165,11 @@
 		<dict>
 			<key>Inject</key>
 			<integer>3</integer>
+			<key>ResetHDA</key>
+			<true/>
 		</dict>
-		<key>FakeID</key>
-		<dict>
-			<key>ATI</key>
-			<string>0x0</string>
-			<key>IMEI</key>
-			<string>0x0</string>
-			<key>LAN</key>
-			<string>0x0</string>
-			<key>NVidia</key>
-			<string>0x0</string>
-			<key>SATA</key>
-			<string>0x0</string>
-			<key>WIFI</key>
-			<string>0x0</string>
-			<key>XHCI</key>
-			<string>0x0</string>
-		</dict>
-		<key>HDMIInjection</key>
-		<false/>
-		<key>LANInjection</key>
-		<false/>
-		<key>Properties</key>
-		<dict>
-			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
-			<dict>
-				<key>AAPL,ig-platform-id</key>
-				<data>
-				AACbPg==
-				</data>
-				<key>device-id</key>
-				<data>
-				mz4AAA==
-				</data>
-				<key>framebuffer-con0-enable</key>
-				<data>
-				AQAAAA==
-				</data>
-				<key>framebuffer-con0-type</key>
-				<data>
-				AAQAAA==
-				</data>
-				<key>framebuffer-patch-enable</key>
-				<data>
-				AQAAAA==
-				</data>
-			</dict>
-		</dict>
-		<key>SetIntelBacklight</key>
-		<false/>
-		<key>SetIntelMaxBacklight</key>
-		<false/>
 		<key>USB</key>
 		<dict>
-			<key>FixOwnership</key>
-			<false/>
 			<key>Inject</key>
 			<false/>
 		</dict>
@@ -250,6 +205,13 @@
 	<dict>
 		<key>EDID</key>
 		<dict>
+			<key>Custom</key>
+			<data>
+			AP///////wAGr+1hAAAAAAAaAQSlIhN4Alklk1hZkykmUFQAAAAB
+			AQEBAQEBAQEBAQEBAQEBeDeAtHA4LkBsMKoAWMEQAAAYAAAADwAA
+			AAAAAAAAAAAAAAAgAAAA/gBBVU8KICAgICAgICAgAAAA/gBCMTU2
+			SEFOMDYuMSAKANo=
+			</data>
 			<key>Inject</key>
 			<false/>
 		</dict>
@@ -258,9 +220,9 @@
 			<key>ATI</key>
 			<false/>
 			<key>Intel</key>
-			<false/>
-			<key>NVidia</key>
 			<true/>
+			<key>NVidia</key>
+			<false/>
 		</dict>
 		<key>NvidiaSingle</key>
 		<false/>
@@ -318,6 +280,26 @@
 		<array>
 			<dict>
 				<key>Comment</key>
+				<string>Set the number of active lanes to 2 (for laptop with 1080p or below display) (by FireWolf)</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				VUiJ5Uj/BaVGBwCLlsAlAACKjg==
+				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
+				<key>MatchOS</key>
+				<string>10.14</string>
+				<key>Name</key>
+				<string>AppleIntelCFLGraphicsFramebuffer</string>
+				<key>Replace</key>
+				<data>
+				VUiJ5bgCAAAAiYa8JQAAMcBdww==
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
 				<string>Disable the sleep code leaving the controller in non-working state after wake, 10.9.*, 10.10.* (credit Zenith432)</string>
 				<key>Disabled</key>
 				<false/>
@@ -332,26 +314,6 @@
 				<key>Replace</key>
 				<data>
 				xoDIAAAAAA==
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>disable port limit in XHCI kext (credit RehabMan, based prior PMHeart patch)</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				g32IDw+DpwQAAA==
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>MatchOS</key>
-				<string>10.13.6</string>
-				<key>Name</key>
-				<string>com.apple.driver.usb.AppleUSBXHCI</string>
-				<key>Replace</key>
-				<data>
-				g32ID5CQkJCQkA==
 				</data>
 			</dict>
 			<dict>
@@ -410,60 +372,78 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Disable minStolenSize less or equal fStolenMemorySize assertion, 10.13.2/3/4 (credit RehabMan)</string>
+				<string>CFL 56CE-&gt;FFFF</string>
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
 				<data>
-				TIlFwHZE
+				zlYAAA==
 				</data>
 				<key>InfoPlistPatch</key>
 				<false/>
-				<key>MatchOS</key>
-				<string>10.13.2,10.13.3,10.13.4,10.13.6</string>
 				<key>Name</key>
-				<string>com.apple.driver.AppleIntelBDWGraphicsFramebuffer</string>
+				<string>AppleIntelCFLGraphicsFramebuffer</string>
 				<key>Replace</key>
 				<data>
-				TIlFwOtE
+				//8AAA==
 				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Disable minStolenSize less or equal fStolenMemorySize assertion, 10.13.2/3 (credit RehabMan)</string>
+				<string>CFL 4571-&gt;FFFF</string>
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
 				<data>
-				TIltuHZG
+				cUUAAA==
 				</data>
 				<key>InfoPlistPatch</key>
 				<false/>
-				<key>MatchOS</key>
-				<string>10.13.2,10.13.3,10.13.4,10.13.6</string>
 				<key>Name</key>
-				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
+				<string>AppleIntelCFLGraphicsFramebuffer</string>
 				<key>Replace</key>
 				<data>
-				TIltuOtG
+				//8AAA==
 				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>10.12.6-KBL-ComputeLaneCount</string>
+				<string>Set the number of active lanes to 2 (for laptop with 1080p or below display) (by FireWolf)</string>
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
 				<data>
-				wOmc
+				VUiJ5Uj/Bb1KBwCLlsAlAACKjg==
 				</data>
 				<key>InfoPlistPatch</key>
 				<false/>
+				<key>MatchOS</key>
+				<string>10.14.1</string>
 				<key>Name</key>
-				<string>AppleIntelKBLGraphicsFramebuffer</string>
+				<string>AppleIntelCFLGraphicsFramebuffer</string>
 				<key>Replace</key>
 				<data>
-				wOma
+				VUiJ5bgCAAAAiYa8JQAAMcBdww==
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>USB port limit patch</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				g/sPD4MDBQAA
+				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
+				<key>MatchOS</key>
+				<string>10.14,10.14.1</string>
+				<key>Name</key>
+				<string>com.apple.driver.usb.AppleUSBXHCI</string>
+				<key>Replace</key>
+				<data>
+				g/sPkJCQkJCQ
 				</data>
 			</dict>
 		</array>
