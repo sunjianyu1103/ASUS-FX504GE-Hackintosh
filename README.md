@@ -32,7 +32,7 @@ Every external kext mentioned is assumed to be the latest.
 1. Clover ACPI `PluginType` enabled
 2. Clover Kernel Patches `Kernel LAPIC`, `KernelPM` and `AppleRTC` enabled
 3. ACPIBatteryManager kext installed to `/Library/Extensions`
-## ALC255 Audio
+## ALC255 Realtek Audio
 Internal speaker and microphone work. For Headphone output, volume balance has to be either left or right to make the sound normal.
 1. `/System/Library/Extensions/AppleGFXHDA.kext` must be removed
 2. AppleALC kext installed to `/Library/Extensions`
@@ -62,7 +62,7 @@ Somewhat works. There may be a 3-minutes lowest backlight level bug at boot.
 # Things that do not work
 ## NVIDIA Geforce 1050 Ti (Optimus)
 Discrete graphic, we probably never see the day.
-## Intel HDMI Port
+## Intel HDMI Port + Audio
 No HDMI output. Once the cable is plugged, the system lags for a couple of seconds.
 ## Intel Wi-Fi AC 9560
 Intel built-in Wi-Fi chipset, we again probably never see the day.
@@ -70,5 +70,7 @@ Intel built-in Wi-Fi chipset, we again probably never see the day.
 VoodooI2C does not work with it, yet.
 ## Sleep and Wake
 No deep sleep support.
+## Intel Bluetooth
+Driver loaded, but not functional.
 
 ![Screenshot](FX504GE-SS.png?raw=true)
