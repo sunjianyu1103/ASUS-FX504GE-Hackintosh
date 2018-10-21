@@ -1,5 +1,5 @@
 # ASUS-FX504GE-Hackintosh
-Discussion, necessary configuration and instructions to get [this ASUS TUF FX504GE laptop](https://www.ultrabookreview.com/19725-asus-tuf-fx504ge-review/) working with macOS Mojave 10.14. The following should also work with all ASUS FX504G.. laptop variants.
+Discussion, necessary configuration and instructions to get [ASUS TUF FX504GE laptop](https://www.ultrabookreview.com/19725-asus-tuf-fx504ge-review/) working with macOS Mojave 10.14. The following should also work with all ASUS FX504G.. laptop variants.
 
 # Notes
 1. 128 GB NVMe SSD is used for installing macOS
@@ -8,13 +8,14 @@ Discussion, necessary configuration and instructions to get [this ASUS TUF FX504
 
 # Pre-installation
 Get yourself a Mojave USB installer with Clover installed. Important Clover settings (via Clover Configurator) are:
-1. Boot: flags: `dart=0 -no_compat_check`
+1. Acpi SSDT `PluginType` checked
 2. CPU: `QPI=100`
-3. Graphics: Inject `Intel=Yes`
-4. SMBIOS: MacBookPro15,2
-5. UEFI Drivers: **EmuVariableUefi-64**, **ApfsDriverLoader-64**, **PartitionDxe-64**, CsmVideoDxe64, OsxAptioFixDrv-64, UsbKbDxe-64, UsbMouseDxe-64, NvmExpressDxe-64.efi, HFSPlus-64
+3. Graphics: Inject Intel checked
+4. Kernel Patches `Kernel LAPIC`, `KernelPM` and `AppleRTC` enabled
+5. SMBIOS: MacBookPro15,2
+6. UEFI Drivers: **EmuVariableUefi-64**, **ApfsDriverLoader-64**, **PartitionDxe-64**, CsmVideoDxe64, OsxAptioFixDrv-64, UsbKbDxe-64, UsbMouseDxe-64, NvmExpressDxe-64.efi, HFSPlus-64
  
-Kexts installed to `/EFI/CLOVER/kexts`: **FakeSMC**, **VoodooPS2Controller**
+Kexts installed to `/EFI/CLOVER/kexts/Other`: **FakeSMC**, **VoodooPS2Controller**
 
 # BIOS Settings
 1. Intel Virtualization Technology & VT-d: Disabled
@@ -34,26 +35,28 @@ Every external kext mentioned is assumed to be the latest.
 3. ACPIBatteryManager kext installed to `/Library/Extensions`
 ## ALC255 Realtek Audio
 Internal speaker and microphone work. For Headphone output, volume balance has to be either left or right to make the sound normal.
-1. `/System/Library/Extensions/AppleGFXHDA.kext` must be removed
+1. `/System/Library/Extensions/AppleGFXHDA.kext` must be removed (ID matched but not actually compatible)
 2. AppleALC kext installed to `/Library/Extensions`
 3. Clover Audio injection `Inject=3`
 ## PS/2 Keyboard
-1. VoodooPS2Controller kext installed to `/Library/Extensions`
+1. VoodooPS2Controller kext installed to `/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using keyboard in Recovery mode)
 2. Karabiner (to remap your keyboard)
 ## Intel UHD 630 Graphics
-1. Clover Intel graphics `Inject=true`
+1. Clover Graphics Inject Intel checked
 2. WhateverGreen kext (with CFL backlight fix) installed to `/Library/Extensions`
 ### Backlight Control
 Somewhat works. There may be a 3-minutes lowest backlight level bug at boot.
 1. AppleBacklightFixup kext installed to `/Library/Extensions`
 2. `SSDT-PNLF.aml` installed to `/EFI/Clover/ACPI/patched`
-3. Clover flag added for WhateverGreen: `igfxcflbklt=freq`
+3. Clover flag added for WhateverGreen: `igfxcflbklt=...` (three possible values, niether makes the fix consistent)
+4. Brightness adjustment keys working by modifying `/EFI/Clover/ACPI/patched/DSDT.aml`
 ## USB 2.0/3.1 Ports
 1. Clover USB injection `Inject=false`
 2. USBInjectAll and XHCI-300-series-injector kexts installed to `/Library/Extensions`
-3. TODO: Edit `SSDT-UIAC.aml` to match available ports
+3. `SSDT-XHC.aml` installed to `/EFI/Clover/ACPI/patched` for better support
+4. TODO: Edit `SSDT-UIAC.aml` to match available ports
 ## Realtek LAN
-1. RTL8111 kext installed to `/Library/Extensions`
+1. RTL8111 kext installed to `/System/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using internet in Recovery mode)
 ## SATA controller
 1. SATA-300-series-unsupported kext installed to `/Library/Extensions`
 ## Miscellaneous
@@ -61,16 +64,16 @@ Somewhat works. There may be a 3-minutes lowest backlight level bug at boot.
 
 # Things that do not work
 ## NVIDIA Geforce 1050 Ti (Optimus)
-Discrete graphic, we probably never see the day.
+Discrete graphic, we probably never see the day. For now, use `SSDT-DDGPU.aml` (in `/EFI/Clover/ACPI/patched`) to power it off.
 ## Intel HDMI Port + Audio
 No HDMI output. Once the cable is plugged, the system lags for a couple of seconds.
 ## Intel Wi-Fi AC 9560
 Intel built-in Wi-Fi chipset, we again probably never see the day.
 ## I2C ELAN1200 Precision TouchPad
-VoodooI2C does not work with it, yet.
+VoodooI2C kext does not work with it, yet.
 ## Sleep and Wake
 No deep sleep support.
 ## Intel Bluetooth
-Driver loaded, but not functional.
+Driver loaded, perhaps incorrectly, but not functional.
 
 ![Screenshot](FX504GE-SS.png?raw=true)

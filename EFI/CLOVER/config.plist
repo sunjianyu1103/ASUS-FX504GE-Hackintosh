@@ -132,9 +132,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>dart=0 igfxcflbklt=freq nvda_drv=1 -uia_ignore_rmcf nv_spanmodepolicy=1 enable-cfl-backlight-fix -no_compat_check</string>
-		<key>CustomLogo</key>
-		<string>Apple</string>
+		<string>dart=0 -igfxnohdmi nvda_drv=1 -uia_ignore_rmcf nv_spanmodepolicy=1 igfxcflbklt=opcode -wegbeta -no_compat_check</string>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
@@ -207,10 +205,10 @@
 		<dict>
 			<key>Custom</key>
 			<data>
-			AP///////wAGr+1hAAAAAAAaAQSlIhN4Alklk1hZkykmUFQAAAAB
-			AQEBAQEBAQEBAQEBAQEBeDeAtHA4LkBsMKoAWMEQAAAYAAAADwAA
-			AAAAAAAAAAAAAAAgAAAA/gBBVU8KICAgICAgICAgAAAA/gBCMTU2
-			SEFOMDYuMSAKANo=
+			////////AAav7WEAAAAAABoBBKUiE3gCWSWTWFmTKSZQVAAAAAEB
+			AQEBAQEBAQEBAQEBAQF4N4C0cDguQGwwqgBYwRAAABgAAAAPAAAA
+			AAAAAAAAAAAAACAAAAD+AEFVTwogICAgICAgICAAAAD+AEIxNTZI
+			QU4wNi4xIAoA2g==
 			</data>
 			<key>Inject</key>
 			<false/>
@@ -239,41 +237,6 @@
 		<true/>
 		<key>KernelPm</key>
 		<true/>
-		<key>KernelToPatch</key>
-		<array>
-			<dict>
-				<key>Comment</key>
-				<string>Disable panic kext logging on 10.13 debug kernel (credit Vandroiy)</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				sABMi1Xw
-				</data>
-				<key>MatchOS</key>
-				<string>10.13.x</string>
-				<key>Replace</key>
-				<data>
-				SIPEQF3D
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Disable panic kext logging on 10.13 release kernel (credit Vandroiy)</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				igKEwHRE
-				</data>
-				<key>MatchOS</key>
-				<string>10.13.x</string>
-				<key>Replace</key>
-				<data>
-				igKEwOtE
-				</data>
-			</dict>
-		</array>
 		<key>KernelXCPM</key>
 		<false/>
 		<key>KextsToPatch</key>
