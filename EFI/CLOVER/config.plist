@@ -132,7 +132,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>dart=0 -igfxnohdmi nvda_drv=1 -uia_ignore_rmcf nv_spanmodepolicy=1 igfxcflbklt=opcode -wegbeta -no_compat_check</string>
+		<string>dart=0 -igfxnohdmi gfxcflbklt=opcode nvda_drv=1 -uia_ignore_rmcf nv_spanmodepolicy=1 -wegbeta -no_compat_check</string>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
@@ -337,7 +337,7 @@
 				<key>Comment</key>
 				<string>CFL 56CE-&gt;FFFF</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Find</key>
 				<data>
 				zlYAAA==
@@ -355,7 +355,7 @@
 				<key>Comment</key>
 				<string>CFL 4571-&gt;FFFF</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Find</key>
 				<data>
 				cUUAAA==
@@ -474,7 +474,7 @@
 	<key>SystemParameters</key>
 	<dict>
 		<key>InjectKexts</key>
-		<string>Yes</string>
+		<string>Detect</string>
 		<key>InjectSystemID</key>
 		<true/>
 		<key>NvidiaWeb</key>
