@@ -37,7 +37,7 @@ Every external kext mentioned is assumed to be the latest.
 Internal speaker and microphone work. For Headphone output, volume balance has to be either left or right to make the sound normal.
 1. `/System/Library/Extensions/AppleGFXHDA.kext` must be removed (ID matched but not actually compatible)
 2. AppleALC kext installed to `/Library/Extensions`
-3. Clover Audio injection `Inject=3`
+3. Clover Audio injection `Inject=3` (`ResetHDA` may be enabled)
 ## PS/2 Keyboard
 1. VoodooPS2Controller kext installed to `/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using keyboard in Recovery mode)
 2. Karabiner (to remap your keyboard)
@@ -69,11 +69,11 @@ Discrete graphic, we probably never see the day. For now, use `SSDT-DDGPU.aml` (
 No HDMI output. Once the cable is plugged, the system lags for a couple of seconds.
 ## Intel Wi-Fi AC 9560
 Intel built-in Wi-Fi chipset, we again probably never see the day.
-## I2C ELAN1200 Precision TouchPad
-VoodooI2C kext does not work with it, yet.
+## I2C ELAN1200 Precision TouchPad (pci8086,a368)
+VoodooI2C kext does not work with it, yet. It keeps saying GPIO controller isn't found.
 ## Sleep and Wake
 No deep sleep support.
 ## Intel Bluetooth
-Driver loaded, perhaps incorrectly, but not functional.
+Not functional, but shown in preferences.
 
 ![Screenshot](FX504GE-SS.png?raw=true)

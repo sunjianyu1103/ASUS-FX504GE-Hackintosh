@@ -111,6 +111,10 @@
 				<key>Signature</key>
 				<string>MATS</string>
 			</dict>
+			<dict>
+				<key>Signature</key>
+				<string>DMAR</string>
+			</dict>
 		</array>
 		<key>FixHeaders</key>
 		<true/>
@@ -132,17 +136,17 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>dart=0 -igfxnohdmi gfxcflbklt=opcode nvda_drv=1 -uia_ignore_rmcf nv_spanmodepolicy=1 -wegbeta -no_compat_check</string>
+		<string>dart=0 nvda_drv=1 -uia_ignore_rmcf nv_spanmodepolicy=1 igfxcflbklt=opcode -wegbeta -no_compat_check</string>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>HibernationFixup</key>
-		<false/>
+		<true/>
 		<key>IgnoreNVRAMBoot</key>
 		<true/>
 		<key>NeverHibernate</key>
-		<true/>
+		<false/>
 		<key>Secure</key>
 		<false/>
 		<key>Timeout</key>
@@ -172,6 +176,10 @@
 			<false/>
 		</dict>
 	</dict>
+	<key>DisableDrivers</key>
+	<array>
+		<string>VBoxHfs</string>
+	</array>
 	<key>GUI</key>
 	<dict>
 		<key>Hide</key>
