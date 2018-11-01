@@ -1,5 +1,5 @@
 # ASUS-FX504GE-Hackintosh
-Discussion, necessary configuration and instructions to get [ASUS TUF FX504GE laptop](https://www.ultrabookreview.com/19725-asus-tuf-fx504ge-review/) working with macOS Mojave 10.14. The following should also work with all ASUS FX504G.. laptop variants.
+Discussion, necessary configurations and instructions to get [ASUS TUF FX504GE laptop](https://www.ultrabookreview.com/19725-asus-tuf-fx504ge-review/) working with macOS Mojave 10.14 (and 10.14.1). The following should also work with all ASUS FX504G.. laptop variants.
 
 # Notes
 1. 128 GB NVMe SSD is used for installing macOS
