@@ -136,7 +136,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>dart=0 nvda_drv=1 -uia_ignore_rmcf nv_spanmodepolicy=1 igfxcflbklt=opcode -wegbeta -no_compat_check</string>
+		<string>dart=0 nvda_drv=1 -uia_ignore_rmcf -lilubetaall nv_spanmodepolicy=1 igfxcflbklt=opcode -wegbeta -no_compat_check</string>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
@@ -153,11 +153,6 @@
 		<integer>5</integer>
 		<key>XMPDetection</key>
 		<string>Yes</string>
-	</dict>
-	<key>CPU</key>
-	<dict>
-		<key>HWPEnable</key>
-		<false/>
 	</dict>
 	<key>Devices</key>
 	<dict>
@@ -357,22 +352,20 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Set the number of active lanes to 2 (for laptop with 1080p or below display) (by FireWolf)</string>
+				<string>Set the maximum link rate in DPCD buffer to 0x0A (HBR) for laptops with 1080p or below display (by FireWolf)</string>
 				<key>Disabled</key>
-				<true/>
+				<false/>
 				<key>Find</key>
 				<data>
-				VUiJ5Uj/Bb1KBwCLlsAlAACKjg==
+				6AAAAABIg8MESIP7CHLQ
 				</data>
 				<key>InfoPlistPatch</key>
 				<false/>
-				<key>MatchOS</key>
-				<string>10.14.1,10.14.2</string>
 				<key>Name</key>
 				<string>AppleIntelCFLGraphicsFramebuffer</string>
 				<key>Replace</key>
 				<data>
-				VUiJ5bgCAAAAiYa8JQAAMcBdww==
+				QYO8JNwBAAAAdQTGRcEK
 				</data>
 			</dict>
 			<dict>
