@@ -136,7 +136,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>dart=0 nvda_drv=1 -uia_ignore_rmcf -lilubetaall nv_spanmodepolicy=1 igfxcflbklt=opcode -wegbeta -no_compat_check</string>
+		<string>dart=0 -igfxnohdmi nvda_drv=1 -uia_ignore_rmcf -lilubetaall nv_spanmodepolicy=1 igfxcflbklt=opcode -wegbeta -no_compat_check</string>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
@@ -162,6 +162,37 @@
 			<integer>3</integer>
 			<key>ResetHDA</key>
 			<true/>
+		</dict>
+		<key>Properties</key>
+		<dict>
+			<key>PciRoot(0)/Pci(0x02,0)</key>
+			<dict>
+				<key>AAPL,ig-platform-id</key>
+				<data>
+				AACbPg==
+				</data>
+				<key>AAPL01,override-no-connect</key>
+				<data>
+				AP///////wAJ0eR4RVQAABAcAQOANR54Lq9FqVRQnCUV
+				UFSla4DRwIHAgQCBgKnAswABAQEBAjqAGHE4LUBYLEUA
+				DyghAAAeAAAA/wBLNEowMTg5NjAxOQogAAAA/QAyTB5T
+				EQAKICAgICAgAAAA/ABCZW5RIEdXMjQ3MAogATM=
+				</data>
+				<key>framebuffer-con1-enable</key>
+				<integer>1</integer>
+				<key>framebuffer-con1-pipe</key>
+				<data>
+				EgAAAA==
+				</data>
+				<key>framebuffer-con1-type</key>
+				<data>
+				AAgAAA==
+				</data>
+				<key>framebuffer-patch-enable</key>
+				<integer>1</integer>
+				<key>hda-gfx</key>
+				<string>onboard-1</string>
+			</dict>
 		</dict>
 		<key>USB</key>
 		<dict>
@@ -219,7 +250,7 @@
 			<key>ATI</key>
 			<false/>
 			<key>Intel</key>
-			<true/>
+			<false/>
 			<key>NVidia</key>
 			<false/>
 		</dict>
