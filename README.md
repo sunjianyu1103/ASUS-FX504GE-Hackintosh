@@ -64,6 +64,7 @@ Somewhat works. There may be a 3-minutes lowest backlight level bug at boot.
    }
    ```
 ### HDMI Port
+**Major drawbacks**: You have to put the laptop to sleep then wake it again to fix blank screen issue at boot. Also, while you are using your laptop, the screen may at some point go blank and the only way to fix this is to hard reboot.
 1. Disable WhateverGreen's HDMI injection by adding a boot flag `-igfxnohdmi`
 2. `device-properties` combination of `framebuffer-con1-type`, `framebuffer-con1-pipe` and `AAPL01,override-no-connect` based on [this post](https://www.tonymacx86.com/threads/uhd-630-no-hdmi-audio.265490/page-2#post-1858289)
 ## USB 2.0/3.1 Ports
