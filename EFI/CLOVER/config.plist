@@ -161,7 +161,7 @@
 			<key>Inject</key>
 			<integer>3</integer>
 			<key>ResetHDA</key>
-			<true/>
+			<false/>
 		</dict>
 		<key>Properties</key>
 		<dict>
