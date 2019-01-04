@@ -192,10 +192,6 @@
 				</data>
 				<key>enable-cfl-backlight-fix</key>
 				<integer>1</integer>
-				<key>framebuffer-flags</key>
-				<data>
-				CxcAAA==
-				</data>
 				<key>framebuffer-unifiedmem</key>
 				<data>
 				AAAAgA==
