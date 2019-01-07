@@ -45,7 +45,7 @@ Internal speaker and microphone work. For Headphone output, volume balance has t
 1. Enabled by `device-properties` injection (have Clover's Inject Intel **unchecked**, go with `0x3E9B0000`)
 2. WhateverGreen kext (with CFL backlight fix) installed to `/Library/Extensions`
 ### Backlight Control
-Use WEG from [here](https://www.tonymacx86.com/threads/bug-black-screen-3-minutes-after-booting-coffeelake-uhd-630.261131/page-35#post-1872686). If you use AppleBacklightFixup, remove it first.
+Install WhateverGreen 1.2.7 or higher. If you use AppleBacklightFixup, remove it first.
 1. Latest `SSDT-PNLF.aml` installed to `/EFI/Clover/ACPI/patched`
 2. Clover flag added for WhateverGreen: `igfxcflbklt=1`
 3. `enable-cfl-backlight-fix` key with number value of 1 in `device-properties` of UHD 630 (`PciRoot(0)/Pci(0x02,0)`)
@@ -90,8 +90,8 @@ Intel built-in Wi-Fi chipset, we again probably never see the day.
 ## I2C ELAN1200 Precision TouchPad (pci8086,a368)
 VoodooI2C does not support GPIO controller (interrupt mode) on Coffee Lake machines, yet.
 ## Sleep and Wake
-No deep sleep support.
+No clue for the unwanted wake reason: `XHCI`, yet.
 ## Intel Bluetooth
-Not functional, but shown in preferences.
+Disabled via `uia_exclude` (`HS14`) as it never works.
 
 ![Screenshot](FX504GE-SS.png?raw=true)
