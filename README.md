@@ -12,7 +12,7 @@ Get yourself a Mojave USB installer with Clover installed. Important Clover sett
 2. Graphics: Inject Intel checked
 3. Kernel Patches `Kernel LAPIC`, `KernelPM` and `AppleRTC` enabled
 4. SMBIOS: MacBookPro15,2
-5. UEFI Drivers: **EmuVariableUefi-64**, **ApfsDriverLoader-64**, **PartitionDxe-64**, CsmVideoDxe64, OsxAptioFixDrv-64, UsbKbDxe-64, UsbMouseDxe-64, NvmExpressDxe-64.efi, HFSPlus-64
+5. UEFI Drivers: **EmuVariableUefi-64**, **ApfsDriverLoader-64**, **PartitionDxe-64**, CsmVideoDxe64, UsbKbDxe-64, UsbMouseDxe-64, NvmExpressDxe-64.efi, HFSPlus-64
  
 Kexts installed to `/EFI/CLOVER/kexts/Other`: **FakeSMC**, **VoodooPS2Controller**
 
