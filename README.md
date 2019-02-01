@@ -1,5 +1,5 @@
 # ASUS-FX504GE-Hackintosh
-Discussion, necessary configurations and instructions to get [ASUS TUF FX504GE laptop](https://www.ultrabookreview.com/19725-asus-tuf-fx504ge-review/) working with macOS Mojave 10.14.x. The following should also work with all ASUS FX504G.. laptop variants.
+Discussion, necessary configurations and instructions to get [ASUS TUF FX504GE laptop](https://www.ultrabookreview.com/19725-asus-tuf-fx504ge-review/) working with macOS Mojave 10.14.x. High Sierra can work on these laptops too, but Mojave is strongly recommended. The following should also work with all ASUS FX504G.. laptop variants.
 
 # Notes
 1. 128 GB NVMe SSD is used for installing macOS
@@ -12,7 +12,17 @@ Get yourself a Mojave USB installer with Clover installed. Important Clover sett
 2. Graphics: Inject Intel checked
 3. Kernel Patches `Kernel LAPIC`, `KernelPM` and `AppleRTC` enabled
 4. SMBIOS: MacBookPro15,2
-5. UEFI Drivers: **EmuVariableUefi-64**, **ApfsDriverLoader-64**, **PartitionDxe-64**, CsmVideoDxe64, UsbKbDxe-64, UsbMouseDxe-64, NvmExpressDxe-64.efi, HFSPlus-64
+5. UEFI Drivers
+    1. **EmuVariableUefi-64** (Native UEFI won't work with macOS)
+    1. **ApfsDriverLoader-64** (If your OS partition is APFS)
+    1. **AptioMemoryFix-64.efi** (Required for ASUS BIOS)
+    1. **PartitionDxe-64**
+    1. CsmVideoDxe64
+    1. UsbKbDxe-64
+    1. UsbMouseDxe-64
+    1. NvmExpressDxe-64.efi (if you use NVMe SSD)
+    1. HFSPlus-64 (If you have HFS+ partitions)
+    1. NTFS-64 (If you have NTFS partitions)
  
 Kexts installed to `/EFI/CLOVER/kexts/Other`: **FakeSMC**, **VoodooPS2Controller**
 
@@ -35,7 +45,7 @@ Every external kext mentioned is assumed to be the latest.
 3. ACPIBatteryManager kext installed to `/Library/Extensions`
 ## ALC255 Realtek Audio
 Internal speaker and microphone work. For Headphone output, volume balance has to be either left or right to make the sound normal.
-1. `/System/Library/Extensions/AppleGFXHDA.kext` must be removed (ID matched but not actually compatible)
+1. `/System/Library/Extensions/AppleGFXHDA.kext` **must be removed** (ID matched but not actually compatible)
 2. AppleALC kext installed to `/Library/Extensions`
 3. Clover Audio injection `Inject=3` (`ResetHDA` may be enabled)
 ## PS/2 Keyboard
@@ -45,11 +55,9 @@ Internal speaker and microphone work. For Headphone output, volume balance has t
 1. Enabled by `device-properties` injection (have Clover's Inject Intel **unchecked**, go with `0x3E9B0000`)
 2. WhateverGreen kext (with CFL backlight fix) installed to `/Library/Extensions`
 ### Backlight Control
-Install WhateverGreen 1.2.7 or higher. If you use AppleBacklightFixup, remove it first.
+Install the latest WhateverGreen. If you use AppleBacklightFixup, remove it.
 1. Latest `SSDT-PNLF.aml` installed to `/EFI/Clover/ACPI/patched`
-2. Clover flag added for WhateverGreen: `igfxcflbklt=1`
-3. `enable-cfl-backlight-fix` key with number value of 1 in `device-properties` of UHD 630 (`PciRoot(0)/Pci(0x02,0)`)
-4. Brightness adjustment keys working by modifying `/EFI/Clover/ACPI/patched/DSDT.aml`
+2. Brightness adjustment keys working by modifying `/EFI/Clover/ACPI/patched/DSDT.aml`
    ```
    Scope (_SB.PCI0.LPCB.EC0) {
         ...
