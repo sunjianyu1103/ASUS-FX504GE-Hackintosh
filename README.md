@@ -20,7 +20,7 @@ Get yourself a Mojave USB installer with Clover installed. Important Clover sett
     1. CsmVideoDxe64
     1. UsbKbDxe-64
     1. UsbMouseDxe-64
-    1. NvmExpressDxe-64.efi (if you use NVMe SSD)
+    1. NvmExpressDxe-64.efi (If you use NVMe SSD)
     1. HFSPlus-64 (If you have HFS+ partitions)
     1. NTFS-64 (If you have NTFS partitions)
  
@@ -56,7 +56,7 @@ Internal speaker and microphone work. For Headphone output, volume balance has t
 2. WhateverGreen kext (with CFL backlight fix) installed to `/Library/Extensions`
 ### Backlight Control
 Install the latest WhateverGreen. If you use AppleBacklightFixup, remove it.
-1. Latest `SSDT-PNLF.aml` installed to `/EFI/Clover/ACPI/patched`
+1. Latest `SSDT-PNLF.aml` and `SSDT-PNLFCFL.aml` installed to `/EFI/Clover/ACPI/patched`
 2. Brightness adjustment keys working by modifying `/EFI/Clover/ACPI/patched/DSDT.aml`
    ```
    Scope (_SB.PCI0.LPCB.EC0) {
@@ -73,7 +73,7 @@ Install the latest WhateverGreen. If you use AppleBacklightFixup, remove it.
    }
    ```
 ### HDMI Port
-**Major drawbacks**: You have to put the laptop to sleep then wake it again to fix blank screen issue at boot. Also, while you are using your laptop, the screen may at some point go blank and the only way to fix this is to hard reboot.
+No thorough test on this.
 1. Disable WhateverGreen's HDMI injection by adding a boot flag `-igfxnohdmi`
 2. `device-properties` combination of `framebuffer-con1-type`, `framebuffer-con1-pipe` and `AAPL01,override-no-connect` based on [this post](https://www.tonymacx86.com/threads/uhd-630-no-hdmi-audio.265490/page-2#post-1858289)
 ## USB 2.0/3.1 Ports
@@ -82,7 +82,7 @@ Install the latest WhateverGreen. If you use AppleBacklightFixup, remove it.
 3. `SSDT-XHC.aml` installed to `/EFI/Clover/ACPI/patched` for better support
 4. Disable unused ports via USBInjectAll-specific boot flag: `uia_exclude=HS04;HS05;HS06;HS08;HS09;HS10;HS11;HS12;HS13;HS14`
 ## Realtek LAN
-1. RTL8111 kext installed to `/System/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using internet in Recovery mode)
+1. [RealtekRTL8111](https://www.insanelymac.com/forum/topic/287161-new-driver-for-realtek-rtl8111/) kext installed to `/System/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using internet in Recovery mode)
 ## SATA controller
 1. SATA-300-series-unsupported kext installed to `/Library/Extensions`
 ## Miscellaneous
