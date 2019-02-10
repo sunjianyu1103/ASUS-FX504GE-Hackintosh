@@ -54,6 +54,9 @@ Internal speaker and microphone work. For Headphone output, volume balance has t
 ## Intel UHD 630 Graphics
 1. Enabled by `device-properties` injection (have Clover's Inject Intel **unchecked**, go with `0x3E9B0000`)
 2. WhateverGreen kext (with CFL backlight fix) installed to `/Library/Extensions`
+## Sleep and Wake
+1. Manual static patching of `USB _PRW 0x6D (instant wake)` for Skylake, focusing on adding `_PRW` to `XDCI` and/or `CNVW` (Special thanks to [MegaStood](https://github.com/MegaStood/Hackintosh-FX504GE-ES72))
+2. Alternatively, compare and modify your `DSDT.aml` file with the one provided in this repository
 ### Backlight Control
 Install the latest WhateverGreen. If you use AppleBacklightFixup, remove it.
 1. Latest `SSDT-PNLF.aml` and `SSDT-PNLFCFL.aml` installed to `/EFI/Clover/ACPI/patched`
@@ -72,7 +75,7 @@ Install the latest WhateverGreen. If you use AppleBacklightFixup, remove it.
         ...
    }
    ```
-### HDMI Port
+### HDMI Port + Audio
 No thorough test on this.
 1. Disable WhateverGreen's HDMI injection by adding a boot flag `-igfxnohdmi`
 2. `device-properties` combination of `framebuffer-con1-type`, `framebuffer-con1-pipe` and `AAPL01,override-no-connect` based on [this post](https://www.tonymacx86.com/threads/uhd-630-no-hdmi-audio.265490/page-2#post-1858289)
@@ -91,15 +94,11 @@ No thorough test on this.
 # Things that do not work
 ## NVIDIA Geforce 1050 Ti (Optimus)
 Discrete graphic, we probably never see the day. For now, use `SSDT-DDGPU.aml` (in `/EFI/Clover/ACPI/patched`) to power it off.
-## Intel HDMI Audio
-Does not work, yet.
 ## Intel Wi-Fi AC 9560
 Intel built-in Wi-Fi chipset, we again probably never see the day.
 ## I2C ELAN1200 Precision TouchPad (pci8086,a368)
 VoodooI2C does not support GPIO controller (interrupt mode) on Coffee Lake machines, yet.
-## Sleep and Wake
-No clue for the unwanted wake reason: `XHCI`, yet.
 ## Intel Bluetooth
-Disabled via `uia_exclude` (`HS14`) as it never works.
+Disabled via `uia_exclude` boot flag (`HS14`) as it never works.
 
 ![Screenshot](FX504GE-SS.png?raw=true)
