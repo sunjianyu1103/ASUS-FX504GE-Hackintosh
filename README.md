@@ -99,6 +99,6 @@ Intel built-in Wi-Fi chipset, we again probably never see the day.
 ## I2C ELAN1200 Precision TouchPad (pci8086,a368)
 VoodooI2C does not support GPIO controller (interrupt mode) on Coffee Lake machines, yet.
 ## Intel Bluetooth
-Disabled via `uia_exclude` boot flag (`HS14`) as it never works.
+It never works if Wi-Fi doesn't work.
 
 ![Screenshot](FX504GE-SS.png?raw=true)
