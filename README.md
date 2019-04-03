@@ -82,8 +82,8 @@ No thorough test on this.
 ## USB 2.0/3.1 Ports
 1. Clover USB injection `Inject=false`
 2. USBInjectAll and XHCI-300-series-injector kexts installed to `/Library/Extensions`
-3. `SSDT-XHC.aml` installed to `/EFI/Clover/ACPI/patched` for better support
-4. Disable unused ports via USBInjectAll-specific boot flag: `uia_exclude=HS04;HS05;HS06;HS08;HS09;HS10;HS11;HS12;HS13;HS14`
+3. `SSDT-XHC.aml` installed to `/EFI/Clover/ACPI/patched` for better USB support
+4. Disable unused USB ports via `/EFI/Clover/APCI/patched/SSDT-UIAC.aml`
 ## Realtek LAN
 1. [RealtekRTL8111](https://www.insanelymac.com/forum/topic/287161-new-driver-for-realtek-rtl8111/) kext installed to `/System/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using internet in Recovery mode)
 ## SATA controller
